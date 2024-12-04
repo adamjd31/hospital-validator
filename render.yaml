@@ -7,7 +7,3 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
-      - key: TWILIO_ACCOUNT_SID
-        value: AC6b5ca71eb47231aaae71fd4cdadb2a47
-      - key: TWILIO_WHATSAPP_NUMBER
-        value: whatsapp:+14155238886

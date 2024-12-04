@@ -9,11 +9,15 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(__name__)
 
-# Configure Twilio client
+# Configure Twilio client - using environment variables
 TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
 TWILIO_WHATSAPP_NUMBER = os.getenv('TWILIO_WHATSAPP_NUMBER')
-client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+
+# Initialize Twilio client if credentials are available
+client = None
+if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 @app.route('/')
 def index():
