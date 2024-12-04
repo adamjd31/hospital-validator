@@ -21,7 +21,7 @@ if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return "Hospital Email Validator Platform - Welcome!"
 
 @app.route('/webhook-forward', methods=['POST'])
 def webhook_forward():
@@ -31,6 +31,10 @@ def webhook_forward():
         return jsonify({"status": "success"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+# For Vercel serverless deployment
+def handler(event, context):
+    return app(event, context)
 
 if __name__ == '__main__':
     app.run(debug=True)
